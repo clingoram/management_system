@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+  <h1>Product List</h1>
+  <a href="/add">新增產品</a>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>名稱</th>
+      <th>售價</th>
+      <th>數量</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${listProducts}">
+      <td th:text="${product.id}">ID</td>
+      <td th:text="${product.name}">名稱</td>
+      <td th:text="${product.price}">售價</td>
+      <td th:text="${product.order_number}">數量</td>
+      <td>
+        <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
+        &nbsp;&nbsp;&nbsp;
+        <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
