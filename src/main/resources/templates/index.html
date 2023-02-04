@@ -15,8 +15,8 @@
       <th>ID</th>
       <th>名稱</th>
       <th>售價</th>
-      <th>數量</th>
-      <th>Actions</th>
+<!--      <th>數量</th>-->
+<!--      <th>Actions</th>-->
     </tr>
     </thead>
     <tbody>
@@ -24,12 +24,12 @@
       <td th:text="${product.id}">ID</td>
       <td th:text="${product.name}">名稱</td>
       <td th:text="${product.price}">售價</td>
-      <td th:text="${product.order_number}">數量</td>
-      <td>
-        <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
-        &nbsp;&nbsp;&nbsp;
-        <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
-      </td>
+<!--      <td th:text="${product.order_number}">數量</td>-->
+<!--      <td>-->
+<!--        <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>-->
+<!--        &nbsp;&nbsp;&nbsp;-->
+<!--        <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>-->
+<!--      </td>-->
     </tr>
     </tbody>
   </table>

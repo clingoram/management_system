@@ -31,19 +31,19 @@ public class ProductController {
         return "add_product";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @PostMapping(value = "/save")
     public String saveProduct(@ModelAttribute("product") Product product) {
         service.save(product);
 
         return "redirect:/";
     }
 
-    @PutMapping("/edit/{id}")
-    public ModelAndView showEditPage(@PathVariable(name = "id") int id){
-        ModelAndView edit  = new ModelAndView("edit");
-        Product product = service.get(id);
-        edit.addObject("product",product);
-
-        return edit;
-    }
+//    @PutMapping("/edit/{id}")
+//    public ModelAndView showEditPage(@PathVariable(name = "id") int id){
+//        ModelAndView edit  = new ModelAndView("edit");
+//        Product product = service.get(id);
+//        edit.addObject("product",product);
+//
+//        return edit;
+//    }
 }
