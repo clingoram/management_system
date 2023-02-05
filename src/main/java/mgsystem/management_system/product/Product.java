@@ -61,6 +61,7 @@ public class Product {
     public float getPrice(){
         return price;
     }
+
 //    public int getOrder_number(){
 //        return order_number;
 //    }

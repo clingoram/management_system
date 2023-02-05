@@ -23,6 +23,7 @@ public class ProductController {
        return "index";
     }
 
+    // direct to add product page.
     @GetMapping("/add")
     public String savePage(Model model){
         Product product = new Product();
@@ -38,12 +39,13 @@ public class ProductController {
         return "redirect:/";
     }
 
-//    @PutMapping("/edit/{id}")
-//    public ModelAndView showEditPage(@PathVariable(name = "id") int id){
-//        ModelAndView edit  = new ModelAndView("edit");
-//        Product product = service.get(id);
-//        edit.addObject("product",product);
-//
-//        return edit;
-//    }
+    // direct to edit page.
+    @GetMapping("/edit/p{id}")
+    public ModelAndView showEditPage(@PathVariable(name = "id") int id){
+        ModelAndView edit  = new ModelAndView("edit_product");
+        Product product = service.get(id);
+        edit.addObject("product",product);
+
+        return edit;
+    }
 }
