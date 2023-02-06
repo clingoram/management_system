@@ -2,8 +2,8 @@ package mgsystem.management_system.product;
 
 import jakarta.persistence.*;
 
+// Model
 // Create table.
-
 @Entity
 @Table(name="product")
 public class Product {

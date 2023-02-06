@@ -26,9 +26,9 @@
       <td th:text="${product.price}">售價</td>
 <!--      <td th:text="${product.order_number}">數量</td>-->
       <td>
-        <a th:href="@{/edit/p(id = ${product.id})}">編輯</a>
+        <a th:href="@{/edit/{id}(id = ${product.id})}">編輯</a>
         &nbsp;&nbsp;&nbsp;
-        <a th:href="@{/delete/p(id=${product.id})}">刪除</a>
+        <a th:href="@{/delete/{id}(id = ${product.id})}">刪除</a>
       </td>
     </tr>
     </tbody>
