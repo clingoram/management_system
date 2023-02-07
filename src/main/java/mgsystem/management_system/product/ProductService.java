@@ -74,15 +74,21 @@ public class ProductService {
 //        return repo.findAll();
 //    }
 
+    /**
+     * 顯示單一資料
+     * @param id long
+     * @return String
+     */
     public String getOneData(long id){
         return repo.getOne(id);
     }
+
     /**
       *  新增資料
      * @param name String
      * @param price float
      */
-    public void insert(String name,float price){
+    public void insert(String name,int price){
         repo.addData(name,price);
     }
 
@@ -92,7 +98,7 @@ public class ProductService {
      * @param name String
      * @param price float
      */
-    public int update(long id,String name,float price){
+    public int update(long id,String name,int price){
         return repo.modify(id,name,price);
     }
 

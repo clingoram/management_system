@@ -25,13 +25,13 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO product(name, price) VALUES (:name, :price);", nativeQuery = true)
-    public int addData(@Param("name") String name, @Param("price") float price);
+    public int addData(@Param("name") String name, @Param("price") Integer price);
 
     // update
     @Transactional
     @Modifying
     @Query(value = "UPDATE product SET name =:name,price =:price WHERE id=:id", nativeQuery = true)
-    public int modify(@Param("id") long id, @Param("name") String name, @Param("price") float price);
+    public int modify(@Param("id") long id, @Param("name") String name, @Param("price") Integer price);
 
     // delete
     @Transactional

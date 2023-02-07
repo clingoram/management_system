@@ -2,6 +2,8 @@ package mgsystem.management_system.product;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 // Model
 // Create table.
 @Entity
@@ -19,11 +21,11 @@ public class Product {
     )
 
     // property
-    private Long id;
+    private long id;
     @Column(name = "name")
     private String name;
     @Column(name = "price")
-    private float price;
+    private Integer price;
 
 //    @OneToMany(cascade = CascadeType.ALL)
 //    private Long category_id;
@@ -37,7 +39,7 @@ public class Product {
     }
 
     // Constructor 2(用來建立跟資料庫有關的資料表相關欄位等資料)
-    public Product(Long id,String name,float price) {
+    public Product(Long id,String name,Integer price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -58,8 +60,9 @@ public class Product {
         return name;
     }
 
-    public float getPrice(){
-        return price;
+    public int getPrice(){
+//        return new BigDecimal(price);
+        return this.price;
     }
 
 //    public int getOrder_number(){
@@ -75,18 +78,12 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
 //    public void setOrder_number(int orderNumber){
 //        this.order_number = orderNumber;
-//    }
-
-//    @Override
-//    public String toString(){
-//        return
-//                "Product {" + "id = " + id +", name = " + name +",price= "+ price+ " number = " + order_number +"}";
 //    }
 
     @Override
