@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>管理系統</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
 </head>
 <body>
 <div align="center">
   <h1>Product List</h1>
-  <a href="/add">新增產品</a>
+  <a href="/data">新增產品</a>
   <br/><br/>
   <table border="1" cellpadding="10">
     <thead>
@@ -15,24 +18,26 @@
       <th>ID</th>
       <th>名稱</th>
       <th>售價</th>
-      <th>數量</th>
+<!--      <th>數量</th>-->
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${listProducts}">
-      <td th:text="${product.id}">ID</td>
-      <td th:text="${product.name}">名稱</td>
-      <td th:text="${product.price}">售價</td>
-      <td th:text="${product.order_number}">數量</td>
+      <td th:text="${product.id}"></td>
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.price}"></td>
+<!--      <td th:text="${product.order_number}">數量</td>-->
       <td>
-        <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
+        <a th:href="@{/data/{id}(id = ${product.id})}">編輯</a>
         &nbsp;&nbsp;&nbsp;
-        <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
+        <a th:href="@{/data/{id}(id = ${product.id})}">刪除</a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+
+  <script src="https://getbootstrap.com/#:~:text=%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap%405.3.0%2Dalpha1/dist/js/bootstrap.bundle.min.js%22%20integrity%3D%22sha384%2Dw76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC%2BnuZB%2BEYdgRZgiwxhTBTkF7CXvN%22%20crossorigin%3D%22anonymous%22%3E%3C/script%3E"></script>
 </body>
 </html>
