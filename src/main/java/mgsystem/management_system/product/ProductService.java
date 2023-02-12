@@ -106,8 +106,8 @@ public class ProductService {
      * 刪除單一資料
      * @param id long
      */
-    public int delete(long id){
-        return repo.remove(id);
+    public void delete(long id){
+        repo.remove(id);
     }
 
 }
