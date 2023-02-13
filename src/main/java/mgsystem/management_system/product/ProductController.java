@@ -45,7 +45,14 @@ public class ProductController {
 //        return edit;
 //    }
 
-    @RequestMapping(value = "/update/{id}", method=RequestMethod.GET)
+    // insert
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveData(@ModelAttribute("product") Product product) {
+        service.save(product);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/data/{id}")
     public String showUpdatePage(@PathVariable(name = "id") Long id){
 //        int convertIdType = Integer.parseInt(id);
         String getData = service.getOneData(id);
@@ -55,32 +62,19 @@ public class ProductController {
         return "edit_product";
     }
 
-
-    // insert
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveData(@ModelAttribute("product") Product product) {
-        service.save(product);
-        return "redirect:/";
-    }
-
     // Put method
-    @RequestMapping(value="/data/{id}", method = RequestMethod.PUT)
-    public String updateData(@PathVariable("id") Long id, @RequestBody Product product,Model model){
-//        String get = service.getOneData(id);
-//        System.out.println(price.getClass().getName());
-
-        String productName = product.getName();
-        Integer productPrice = product.getPrice();
-
-        int updateResult = service.update(id,productName,productPrice);
-//        if(updateResult == 1){
-//            System.out.println("Success");
-//        }else{
-//            System.out.println("Fail");
-//        }
-
-        return "redirect:/";
-    }
+//    , method = RequestMethod.PUT
+//    ,Model model
+//    @RequestMapping(value="/data/{id}")
+//    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
+////        String get = service.getOneData(id);
+////        System.out.println(price.getClass().getName());
+//        String productName = product.getName();
+//        Integer productPrice = product.getPrice();
+//
+//        service.update(id,productName,productPrice);
+//        return "redirect:/";
+//    }
 
 //     Delete
     @RequestMapping(path = "/data/{id}", method = RequestMethod.DELETE)
