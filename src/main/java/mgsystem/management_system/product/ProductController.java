@@ -1,8 +1,6 @@
 package mgsystem.management_system.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.source.ConfigurationPropertyName;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +21,6 @@ public class ProductController {
        model.addAttribute("listProducts", list);
        return "index";
     }
-
 
     // direct to add product page.
     @RequestMapping(path = "/data", method = RequestMethod.GET)
@@ -53,34 +50,31 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/data/{id}")
-    public String showUpdatePage(@PathVariable(name = "id") Long id){
-//        int convertIdType = Integer.parseInt(id);
-        String getData = service.getOneData(id);
+    public ModelAndView showUpdatePage(@PathVariable(name = "id") Long id){
+//        String getData = service.getOneData(id);
 
-        ModelAndView edit  = new ModelAndView("edit_product");
-        edit.addObject("product",getData);
-        return "edit_product";
+        Product getData = service.get(id);
+        ModelAndView mav  = new ModelAndView("edit_product");
+        mav.addObject("product",getData);
+        return mav;
     }
 
     // Put method
-//    , method = RequestMethod.PUT
-//    ,Model model
-//    @RequestMapping(value="/data/{id}")
-//    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
-////        String get = service.getOneData(id);
-////        System.out.println(price.getClass().getName());
-//        String productName = product.getName();
-//        Integer productPrice = product.getPrice();
-//
-//        service.update(id,productName,productPrice);
-//        return "redirect:/";
-//    }
+    @RequestMapping(value="/data/{id}", method = RequestMethod.PUT)
+    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
+//        String get = service.getOneData(id);
+//        System.out.println(price.getClass().getName());
+        String productName = product.getName();
+        Integer productPrice = product.getPrice();
+
+        service.update(id,productName,productPrice);
+        return "redirect:/";
+    }
 
 //     Delete
-    @RequestMapping(path = "/data/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/data/{id}", method = RequestMethod.DELETE)
 //    @DeleteMapping(path="data/{id}")
     public String deleteData(@PathVariable("id") Long id){
-//        int convertIdType = Integer.parseInt(id);
         service.delete(id);
         return "redirect:/";
     }
