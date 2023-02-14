@@ -1,7 +1,6 @@
 package mgsystem.management_system.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,6 @@ public class ProductController {
        return "index";
     }
 
-
     // direct to add product page.
     @RequestMapping(path = "/data", method = RequestMethod.GET)
     public String showAddPage(Model model){
@@ -33,17 +31,16 @@ public class ProductController {
     }
 
     // direct to edit page and save the edited data.
-    @RequestMapping(value = "/update", method=RequestMethod.GET)
-    public ModelAndView showEditPageAndSave(@PathVariable(name = "id") String id){
-        int convertType = Integer.parseInt(id);
-
-        ModelAndView edit  = new ModelAndView("edit_product");
-        String get = service.getOneData(convertType);
-        edit.addObject("product",get);
-
-        return edit;
-    }
-
+//    @RequestMapping(value = "/edit/{id}", method=RequestMethod.GET)
+//    public ModelAndView showEditPageAndSave(@PathVariable(name = "id") String id){
+//        int convertType = Integer.parseInt(id);
+//
+//        ModelAndView edit  = new ModelAndView("edit_product");
+//        String get = service.getOneData(convertType);
+//        edit.addObject("product",get);
+//
+//        return edit;
+//    }
 
     // insert
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -52,44 +49,33 @@ public class ProductController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/data/{id}")
+    public ModelAndView showUpdatePage(@PathVariable(name = "id") Long id){
+//        String getData = service.getOneData(id);
+
+        Product getData = service.get(id);
+        ModelAndView mav  = new ModelAndView("edit_product");
+        mav.addObject("product",getData);
+        return mav;
+    }
+
     // Put method
     @RequestMapping(value="/data/{id}", method = RequestMethod.PUT)
     public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
 //        String get = service.getOneData(id);
 //        System.out.println(price.getClass().getName());
+        String productName = product.getName();
+        Integer productPrice = product.getPrice();
 
-        String product_name = product.getName();
-        Integer product_price = product.getPrice();
-        System.out.println(product_price);
-
-//        if(product_name != null && product_price > 0){
-            int result = service.update(id,product_name,product_price);
-            if(result == 1){
-                System.out.println("Success");
-            }else{
-                System.out.println("Fail");
-            }
-//        }
-
+        service.update(id,productName,productPrice);
         return "redirect:/";
     }
 
 //     Delete
-//    @RequestMapping(path = "/data/{id}", method = RequestMethod.DELETE)
-    @DeleteMapping(path="data/{id}")
-    public String deleteData(@PathVariable("id") String id){
-        int convertType = Integer.parseInt(id);
-//        service.delete(convertType);
-
-        String rspMessage = null;
-        int removeResult = service.delete(convertType);
-
-        if(removeResult == 1){
-            rspMessage = "Data Removed. Effect row: " + removeResult;
-        }else{
-            rspMessage = "Nothing removed";
-        }
-
+    @RequestMapping(value = "/data/{id}", method = RequestMethod.DELETE)
+//    @DeleteMapping(path="data/{id}")
+    public String deleteData(@PathVariable("id") Long id){
+        service.delete(id);
         return "redirect:/";
     }
 }

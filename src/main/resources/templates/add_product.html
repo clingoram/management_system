@@ -17,6 +17,7 @@
           <td>名稱:</td>
           <td>
 <!--            th:field="*{name}"-->
+<!--              th:value="${name}"-->
             <input type="text" name = "name" th:value="${name}" />
           </td>
         </tr>
@@ -24,11 +25,13 @@
           <td>售價:</td>
           <td>
 <!--            th:field="*{price}"-->
+<!--              th:value="${price}"-->
             <input type="number" name="price" th:value="${price}" />
           </td>
         </tr>
         <tr>
           <td colspan="2">
+              <input type="reset" value="Reset" /></p>
             <button type="submit">Save</button>
           </td>
         </tr>

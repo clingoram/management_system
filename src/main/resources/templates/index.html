@@ -9,13 +9,13 @@
 </head>
 <body>
 <div align="center">
-  <h1>Product List</h1>
+  <h1>清單</h1>
   <a href="/data">新增產品</a>
   <br/><br/>
   <table border="1" cellpadding="10">
     <thead>
     <tr>
-      <th>ID</th>
+<!--      <th>ID</th>-->
       <th>名稱</th>
       <th>售價</th>
 <!--      <th>數量</th>-->
@@ -24,14 +24,12 @@
     </thead>
     <tbody>
     <tr th:each="product : ${listProducts}">
-      <td th:text="${product.id}"></td>
+<!--      <td th:text="${product.id}"></td>-->
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
-<!--      <td th:text="${product.order_number}">數量</td>-->
       <td>
-        <a th:href="@{/data/{id}(id = ${product.id})}">編輯</a>
-        &nbsp;&nbsp;&nbsp;
-        <a th:href="@{/data/{id}(id = ${product.id})}">刪除</a>
+        <a th:href="@{/data/{id}(id=${product.id})}">編輯</a>
+        <a th:href="@{/data/{id}(id=${product.id})}">刪除</a>
       </td>
     </tr>
     </tbody>

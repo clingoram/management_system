@@ -30,12 +30,12 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // update
     @Transactional
     @Modifying
-    @Query(value = "UPDATE product SET name =:name,price =:price WHERE id=:id", nativeQuery = true)
+    @Query(value = "UPDATE product SET name =:name,price =:price WHERE id= :id", nativeQuery = true)
     public int modify(@Param("id") long id, @Param("name") String name, @Param("price") Integer price);
 
     // delete
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM product WHERE id =:id", nativeQuery = true)
-    public int remove(@Param("id") long id);
+    @Query(value = "DELETE FROM product WHERE id = :id", nativeQuery = true)
+    public void remove(@Param("id") long id);
 }
