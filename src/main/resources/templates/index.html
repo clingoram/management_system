@@ -24,12 +24,16 @@
     </thead>
     <tbody>
     <tr th:each="product : ${listProducts}">
-<!--      <td th:text="${product.id}"></td>-->
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td>
         <a th:href="@{/data/{id}(id=${product.id})}">編輯</a>
         <a th:href="@{/data/{id}(id=${product.id})}">刪除</a>
+
+<!--          <form th:action="@{/data/{id}(id=${product.id})}" th:object="${product}" method="delete">-->
+<!--              <input type="hidden" th:field="${product.id}">刪除</input>-->
+<!--          </form>-->
+
       </td>
     </tr>
     </tbody>

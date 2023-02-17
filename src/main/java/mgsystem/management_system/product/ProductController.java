@@ -54,11 +54,13 @@ public class ProductController {
 //        String getData = service.getOneData(id);
 
         Product getData = service.get(id);
-        System.out.println(getData);
 
         ModelAndView mav  = new ModelAndView("edit_product");
         mav.addObject("product",getData);
-        return mav;
+        return  mav;
+//        model.addAttribute("product",getData);
+//        System.out.println(model);
+//        return "edit_product";
     }
 
     // Put method
@@ -67,6 +69,9 @@ public class ProductController {
 //        System.out.println(price.getClass().getName());
         String productName = product.getName();
         Integer productPrice = product.getPrice();
+        System.out.println(productName);
+        System.out.println(productPrice);
+
         service.update(id,productName,productPrice);
         return "redirect:/";
     }
