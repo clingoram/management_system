@@ -54,6 +54,7 @@ public class ProductController {
 //        String getData = service.getOneData(id);
 
         Product getData = service.get(id);
+        System.out.println(getData);
 
         ModelAndView mav  = new ModelAndView("edit_product");
         mav.addObject("product",getData);
@@ -66,19 +67,17 @@ public class ProductController {
     // Put method
     @RequestMapping(value="/data/{id}", method = RequestMethod.PUT)
     public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
-//        System.out.println(price.getClass().getName());
+
         String productName = product.getName();
         Integer productPrice = product.getPrice();
-        System.out.println(productName);
-        System.out.println(productPrice);
+        System.out.println(productPrice.getClass().getName());
 
         service.update(id,productName,productPrice);
         return "redirect:/";
     }
 
 //     Delete
-    @RequestMapping(value = "/data/{id}", method = RequestMethod.DELETE)
-//    @DeleteMapping(path="data/{id}")
+    @RequestMapping(value = "/data/{id}", method = RequestMethod.GET)
     public String deleteData(@PathVariable("id") Long id){
         service.delete(id);
         return "redirect:/";

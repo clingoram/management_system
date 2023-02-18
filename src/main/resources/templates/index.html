@@ -28,12 +28,9 @@
       <td th:text="${product.price}"></td>
       <td>
         <a th:href="@{/data/{id}(id=${product.id})}">編輯</a>
-        <a th:href="@{/data/{id}(id=${product.id})}">刪除</a>
+<!--        <a th:href="@{/data/{id}(id=${product.id})}">刪除</a>-->
 
-<!--          <form th:action="@{/data/{id}(id=${product.id})}" th:object="${product}" method="delete">-->
-<!--              <input type="hidden" th:field="${product.id}">刪除</input>-->
-<!--          </form>-->
-
+          <a th:href="|@{/data/{id}(id = ${product.id})}|" class="btn btn-danger">刪除</a>
       </td>
     </tr>
     </tbody>
