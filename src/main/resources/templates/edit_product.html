@@ -18,7 +18,7 @@
 
 <!--      <form action="#" th:action="@{/edit/{id}(id=${product.id})}" th:object="${product}" th:method="put">-->
 
-    <form action="#" th:action="@{/edit}" th:object="${product}"  method="put">
+    <form action="#" th:action="@{/update/{id}(id=${product.id})}" th:object="${product}"  method="put">
       <table border="0" cellpadding="10">
         <tr>
           <td>名稱:</td>
