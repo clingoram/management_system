@@ -15,21 +15,20 @@
   <table border="1" cellpadding="10">
     <thead>
     <tr>
-<!--      <th>ID</th>-->
       <th>名稱</th>
       <th>售價</th>
-<!--      <th>數量</th>-->
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${listProducts}">
-<!--      <td th:text="${product.id}"></td>-->
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td>
-        <a th:href="@{/data/{id}(id=${product.id})}">編輯</a>
-        <a th:href="@{/data/{id}(id=${product.id})}">刪除</a>
+        <a th:href="@{/update/{id}(id=${product.id})}" class="btn btn-success">編輯</a>
+
+<!--          <a th:href="|@{/data/{id}(id = ${product.id})}|" class="btn btn-danger">刪除</a>-->
+          <a th:href="@{/delete/{id}(id = ${product.id})}" class="btn btn-danger">刪除</a>
       </td>
     </tr>
     </tbody>

@@ -10,6 +10,8 @@ import java.util.List;
 
 // Handle requests from the client side.
 @Controller
+//@RestController
+//@RequestMapping("/api")
 public class ProductController {
     @Autowired
     private ProductService service;
@@ -19,7 +21,8 @@ public class ProductController {
     public String index(Model model){
        List<Product> list = service.listAllData();
        model.addAttribute("listProducts", list);
-       return "index";
+
+       return "/index";
     }
 
     // direct to add product page.
@@ -45,35 +48,44 @@ public class ProductController {
     // insert
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveData(@ModelAttribute("product") Product product) {
-        service.save(product);
+        if(product.getName() != null && product.getPrice() > 0){
+            service.save(product);
+            return "redirect:/";
+        }
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/data/{id}")
+//    @RequestMapping(value = "/data/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/update/{id}")
     public ModelAndView showUpdatePage(@PathVariable(name = "id") Long id){
-//        String getData = service.getOneData(id);
 
+//        String getData = service.getOneData(id.intValue());
+        System.out.println("showUpdatePage");
         Product getData = service.get(id);
+//        System.out.println(getData);
+
         ModelAndView mav  = new ModelAndView("edit_product");
         mav.addObject("product",getData);
-        return mav;
+        return  mav;
+
+//        model.addAttribute("product",getData);
+//        System.out.println(model);
+//        return "edit_product";
     }
 
     // Put method
-    @RequestMapping(value="/data/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value="/update/{id}", method = RequestMethod.PUT)
     public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
-//        String get = service.getOneData(id);
-//        System.out.println(price.getClass().getName());
         String productName = product.getName();
         Integer productPrice = product.getPrice();
+//        System.out.println(productPrice.getClass().getName());
 
         service.update(id,productName,productPrice);
         return "redirect:/";
     }
 
 //     Delete
-    @RequestMapping(value = "/data/{id}", method = RequestMethod.DELETE)
-//    @DeleteMapping(path="data/{id}")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteData(@PathVariable("id") Long id){
         service.delete(id);
         return "redirect:/";
