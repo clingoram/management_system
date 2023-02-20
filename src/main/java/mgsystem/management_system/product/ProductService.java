@@ -23,9 +23,9 @@ public class ProductService {
      *
      * @return
      */
-    public List<Product> listAllData(){
-        return repo.findAll();
-    }
+//    public List<Product> listAllData(){
+//        return repo.findAll();
+//    }
 
     /**
      * 儲存資料
@@ -70,23 +70,24 @@ public class ProductService {
     /**
      * 顯示所有資料
      */
-//    public List<Product> listAllData(){
-//        return repo.findAll();
-//    }
+    public List<Product> AllData(){
+        return repo.findAll();
+    }
 
     /**
      * 顯示單一資料
      * @param id long
-     * @return String
+     * @return boolean
      */
     public String getOneData(long id){
         return repo.getOne(id);
     }
 
     /**
-      *  新增資料
+      * 新增資料
+     *
      * @param name String
-     * @param price float
+     * @param price int
      */
     public void insert(String name,int price){
         repo.addData(name,price);
@@ -96,11 +97,14 @@ public class ProductService {
      * 更新資料
      * @param id long
      * @param name String
-     * @param price float
+     * @param price int
      */
-    public int update(long id,String name,int price){
-        return repo.modify(id,name,price);
+    public void update(long id,String name,int price){
+        repo.modify(id,name,price);
     }
+//    public void update(Product pro){
+//        repo.modify(pro);
+//    }
 
     /**
      * 刪除單一資料
