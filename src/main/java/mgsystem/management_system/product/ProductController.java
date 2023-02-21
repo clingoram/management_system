@@ -29,7 +29,6 @@ public class ProductController {
 //       List<Product> list = service.listAllData();
         List<Product> list = service.AllData();
         model.addAttribute("listProducts", list);
-
         return "/index";
     }
 
@@ -46,7 +45,6 @@ public class ProductController {
     public String saveData(@ModelAttribute("product") Product product) {
         try{
             if(product.getPrice() == 0 || product.getName() == null){
-//                throw new ArithmeticException();
                 HandleError.throwInputsError();
             }else{
                 service.save(product);
@@ -58,17 +56,17 @@ public class ProductController {
         return DIRECT_URL;
     }
 
-
     @GetMapping("/update/{id}")
     public String showUpdatePage(@PathVariable(name = "id") Long id,Model model){
         try{
             String find = service.getOneData(id);
             if(find.isEmpty()){
-//                throw new ArithmeticException();
                 HandleError.throwIdError();
             }else{
                 System.out.println("showUpdatePage");
                 Product getData = service.get(id);
+
+//                this.updateData(id,getData);
 
 //                ModelAndView mav  = new ModelAndView("edit_product");
 //                mav.addObject("product",getData);
@@ -79,7 +77,6 @@ public class ProductController {
         }catch(ArithmeticException e){
             System.out.println("Error: " + e);
         }
-
         return "edit_product";
 
 //        model.addAttribute("product",getData);
@@ -90,22 +87,21 @@ public class ProductController {
     // Put method
     @PutMapping("/update/{id}")
     public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
-        System.out.println("updated");
+        System.out.println("Updated.");
 
+        String productName = product.getName();
+        Integer productPrice = product.getPrice();
+        System.out.println(productPrice.getClass().getName());
 
-//        String productName = product.getName();
-//        Integer productPrice = product.getPrice();
-//        System.out.println(productPrice.getClass().getName());
-
-//        service.update(id,productName,productPrice);
+        service.update(id,productName,productPrice);
 
         // ---------
-        String res = service.getOneData(id);
-
-        product.setName(product.getName());
-        product.setPrice(product.getPrice());
+//        String res = service.getOneData(id);
+//
+//        product.setName(product.getName());
+//        product.setPrice(product.getPrice());
 //        service.update(product);
-        service.save(product);
+//        service.save(product);
 
         return  DIRECT_URL;
     }
@@ -116,7 +112,6 @@ public class ProductController {
         try{
             String find = service.getOneData(id);
             if(find.isEmpty()){
-                //                throw new ArithmeticException();
                 HandleError.throwIdError();
             }else{
                 service.delete(id);
