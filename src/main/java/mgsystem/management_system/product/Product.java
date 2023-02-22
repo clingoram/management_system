@@ -50,6 +50,22 @@ public class Product {
     public Product(String name) {
         this.name = name;
     }
+    // Setter
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    //    public void setOrder_number(int orderNumber){
+//        this.order_number = orderNumber;
+//    }
 
     // Getter
     public Long getId() {
@@ -67,23 +83,6 @@ public class Product {
 
 //    public int getOrder_number(){
 //        return order_number;
-//    }
-
-    // Setter
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-//    public void setOrder_number(int orderNumber){
-//        this.order_number = orderNumber;
 //    }
 
     @Override

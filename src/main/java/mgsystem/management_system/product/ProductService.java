@@ -102,9 +102,6 @@ public class ProductService {
     public void update(long id,String name,int price){
         repo.modify(id,name,price);
     }
-//    public void update(Product pro){
-//        repo.modify(pro);
-//    }
 
     /**
      * 刪除單一資料
