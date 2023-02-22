@@ -17,13 +17,11 @@ import java.util.Objects;
 @RequestMapping("/api")
 public class ProductController {
     final String DIRECT_URL = "redirect:/api/index";
-    // final String DIRECT_URL = "redirect:/";
 
     @Autowired
     private ProductService service;
 
-    // direct to index.html.
-//    @RequestMapping(path = "/index", method = RequestMethod.GET)
+    // index
     @GetMapping("/index")
     public String index(Model model){
 //       List<Product> list = service.listAllData();
@@ -63,7 +61,6 @@ public class ProductController {
             if(find.isEmpty()){
                 HandleError.throwIdError();
             }else{
-//                System.out.println("showUpdatePage");
                 Product getData = service.get(id);
 
 //                ModelAndView mav  = new ModelAndView("edit_product");
@@ -84,22 +81,21 @@ public class ProductController {
 
     // Update
     @PostMapping("/update/{id}")
-//    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
     public String updateData(@PathVariable("id") Long id, String name,int price){
-//        System.out.println("Updated.");
-
-//        String productName = product.getName();
-//        Integer productPrice = product.getPrice();
-
-//        System.out.println(productPrice.getClass().getName());
-//
-//        service.update(id,productName,productPrice);
-
-        service.update(id,name,price);
+        try{
+            String find = service.getOneData(id);
+            if(find.isEmpty()){
+                HandleError.throwIdError();
+            }else{
+                service.update(id,name,price);
+            }
+        }catch(ArithmeticException e){
+            System.out.println("Error: " + e);
+        }
         return DIRECT_URL;
     }
 
-//     Delete
+    // Delete
     @GetMapping("/delete/{id}")
     public String deleteData(@PathVariable("id") Long id){
         try{
