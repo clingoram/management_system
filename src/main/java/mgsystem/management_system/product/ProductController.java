@@ -63,10 +63,8 @@ public class ProductController {
             if(find.isEmpty()){
                 HandleError.throwIdError();
             }else{
-                System.out.println("showUpdatePage");
+//                System.out.println("showUpdatePage");
                 Product getData = service.get(id);
-
-//                this.updateData(id,getData);
 
 //                ModelAndView mav  = new ModelAndView("edit_product");
 //                mav.addObject("product",getData);
@@ -84,26 +82,21 @@ public class ProductController {
 //        return "edit_product";
     }
 
-    // Put method
-    @PutMapping("/update/{id}")
-    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
-        System.out.println("Updated.");
+    // Update
+    @PostMapping("/update/{id}")
+//    public String updateData(@PathVariable("id") Long id, @RequestBody Product product){
+    public String updateData(@PathVariable("id") Long id, String name,int price){
+//        System.out.println("Updated.");
 
-        String productName = product.getName();
-        Integer productPrice = product.getPrice();
-        System.out.println(productPrice.getClass().getName());
+//        String productName = product.getName();
+//        Integer productPrice = product.getPrice();
 
-        service.update(id,productName,productPrice);
-
-        // ---------
-//        String res = service.getOneData(id);
+//        System.out.println(productPrice.getClass().getName());
 //
-//        product.setName(product.getName());
-//        product.setPrice(product.getPrice());
-//        service.update(product);
-//        service.save(product);
+//        service.update(id,productName,productPrice);
 
-        return  DIRECT_URL;
+        service.update(id,name,price);
+        return DIRECT_URL;
     }
 
 //     Delete
