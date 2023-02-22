@@ -9,14 +9,7 @@
     <h1>編輯</h1>
     <a th:href="@{/api/index}">Back</a>
     <br />
-<!--      <tr th:each="product : ${product}">-->
-<!--          <td th:text="${product.id}">1</td>-->
-<!--          <td><a href="#" th:text="${product.name}">Title ...</a></td>-->
-<!--          <td th:text="${product.price}">Text ...</td>-->
-<!--      </tr>-->
 
-
-<!--      <form action="#" th:action="@{/edit/{id}(id=${product.id})}" th:object="${product}" th:method="put">-->
 <!--    <form action="#" th:action="@{/api/update/{id}(id=${product.id})}" th:object="${product}"  method="put">-->
 
     <form action="#" th:action="@{/api/update/{id}(id=${product.id})}" th:object="${product}"  method="post">
