@@ -1,12 +1,28 @@
 package mgsystem.management_system.category;
 
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import mgsystem.management_system.product.Product;
+import org.hibernate.mapping.Set;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.util.Date;
 
 public class Category {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
     private String name;
+
+    @CreatedDate
+    @Column(updatable = false, nullable = false)
+    Date createTime = new Date();
+
+//    @JsonManagedReference
+//    @OneToMany(cascade = CascadeType.ALL,targetEntity = Product.class)
+//    private Set<Product> product;
 
     public Category(){}
 
