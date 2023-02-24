@@ -1,6 +1,8 @@
 package mgsystem.management_system.product;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import mgsystem.management_system.category.Category;
 
 import java.math.BigDecimal;
 
@@ -27,9 +29,11 @@ public class Product {
     @Column(name = "price")
     private Integer price;
 
-//    @OneToMany(cascade = CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL,targetEntity = Category.class)
 //    private Long category_id;
-//    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 //    private int order_number;
 

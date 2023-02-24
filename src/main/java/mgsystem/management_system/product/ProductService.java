@@ -18,14 +18,6 @@ public class ProductService {
     @Autowired
     private ProductRepository repo;
 
-    /**
-     * 顯示所有資料
-     *
-     * @return
-     */
-//    public List<Product> listAllData(){
-//        return repo.findAll();
-//    }
 
     /**
      * 儲存資料
@@ -56,17 +48,7 @@ public class ProductService {
 //        return product;
     }
 
-    /**
-     * 刪除單一資料
-     *
-     * @param id
-     */
-//    public void delete(long id){
-//        repo.deleteById(id);
-//    }
 
-    // ---------------
-    // call repo methods.
     /**
      * 顯示所有資料
      */

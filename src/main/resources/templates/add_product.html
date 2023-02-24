@@ -26,6 +26,14 @@
           </td>
         </tr>
         <tr>
+          <td>分類:</td>
+          <td>
+            <select name="category" id="category">
+              <option th:each="text : ${product.category_id}" th:value="${text}" th:text="${text}" />
+            </select>
+          </td>
+        </tr>
+        <tr>
           <td colspan="2">
               <input type="reset" value="Reset" /></p>
             <button type="submit">Save</button>
