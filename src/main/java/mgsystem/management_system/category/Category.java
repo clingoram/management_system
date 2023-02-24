@@ -8,6 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
 
+@Entity
+@Table(name="category")
 public class Category {
 
     @Id
@@ -21,8 +23,8 @@ public class Category {
     Date createTime = new Date();
 
 //    @JsonManagedReference
-//    @OneToMany(cascade = CascadeType.ALL,targetEntity = Product.class)
-//    private Set<Product> product;
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
+//    private Set products;
 
     public Category(){}
 

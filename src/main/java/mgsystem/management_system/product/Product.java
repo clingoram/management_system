@@ -30,7 +30,7 @@ public class Product {
     private Integer price;
 
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,targetEntity = Category.class)
 //    private Long category_id;
     @JoinColumn(name = "category_id")
     private Category category;

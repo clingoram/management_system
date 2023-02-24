@@ -24,7 +24,6 @@ public class ProductController {
     // index
     @GetMapping("/index")
     public String index(Model model){
-//       List<Product> list = service.listAllData();
         List<Product> list = service.AllData();
         model.addAttribute("listProducts", list);
         return "/index";
