@@ -31,7 +31,6 @@ public class Product {
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL,targetEntity = Category.class)
-//    private Long category_id;
     @JoinColumn(name = "category_id")
     private Category category;
 

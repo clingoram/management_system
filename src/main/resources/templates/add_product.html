@@ -29,7 +29,7 @@
           <td>分類:</td>
           <td>
             <select name="category" id="category">
-              <option th:each="text : ${product.category_id}" th:value="${text}" th:text="${text}" />
+              <option th:each="text : ${category_id}" th:value="${text.id}" th:text="${text.id}" />
             </select>
           </td>
         </tr>
