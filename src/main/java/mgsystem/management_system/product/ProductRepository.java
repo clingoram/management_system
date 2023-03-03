@@ -17,9 +17,9 @@ public interface ProductRepository extends JpaRepository<Product,Long>{
     // 將資料存放進一個List回傳
     public List<Product> listAllData();
 
-//    @Query(value = "SELECT id,name FROM category;", nativeQuery = true)
-//    // 將資料存放進一個List回傳
-//    public List<Category> AllData();
+    @Query(value = "SELECT id AS cId,name AS cName FROM category;", nativeQuery = true)
+    // 將資料存放進一個List回傳
+    public String AllData();
 
 
     // Read

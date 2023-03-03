@@ -57,6 +57,10 @@ public class ProductService {
         return repo.findAll();
     }
 
+    public String categoryData(){
+        return repo.AllData();
+    }
+
     /**
      * 顯示單一資料
      * @param id long

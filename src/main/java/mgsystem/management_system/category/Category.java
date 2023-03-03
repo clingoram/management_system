@@ -37,15 +37,15 @@ public class Category {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setCategory(String name) {
         this.name = name;
     }
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return this.name;
     }
 }
