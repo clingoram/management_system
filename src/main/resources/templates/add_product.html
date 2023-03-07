@@ -32,9 +32,15 @@
 <!--              <option th:each="option : ${product}" th:value="${option}" th:text="${option}" />-->
 <!--            </select>-->
 
-            <select name="category" id="category" th:each="option : ${product}" >
-              <option th:value="${option}" th:text="${option}" />
-            </select>
+<!--            <select name="category" id="category" th:each="option : ${product}" >-->
+<!--              <option th:value="${option}" th:text="${option}" />-->
+<!--            </select>-->
+
+              <select name="category" id="category" th:field="*{category_id}" >
+<!--                  <option th:value="${option}" th:text="${option}" />-->
+                  <option th:each="option : ${product}" th:value="${option.id}" th:text="${option.name}"></option>
+              </select>
+              </select>
           </td>
         </tr>
         <tr>

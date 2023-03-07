@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,11 +37,12 @@ public class ProductController {
     public String showAddPage(Model model){
         Product product = new Product();
 
-//        List<Category> cate = service.categoryData();
-        String cate = service.categoryData();
+        List<Category> cate = service.categoryData();
+//        HashMap<Integer,String> cate = service.categoryData();
         System.out.println(cate);
 
-//        List<String> cate = new ArrayList<String>();
+//        HashMap<Integer,String> categoryList = new HashMap<>();
+
 //        cate.add("option 1");
 //        cate.add("option 2");
 //        cate.add("option 3");

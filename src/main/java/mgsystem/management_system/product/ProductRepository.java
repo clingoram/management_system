@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product,Long>{
 
     @Query(value = "SELECT id AS cId,name AS cName FROM category;", nativeQuery = true)
     // 將資料存放進一個List回傳
-    public String AllData();
+    public List<Category> AllData();
 
 
     // Read
