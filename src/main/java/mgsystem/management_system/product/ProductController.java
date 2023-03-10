@@ -37,11 +37,13 @@ public class ProductController {
     public String showAddPage(Model model){
         Product product = new Product();
 
-        List<Category> cate = service.categoryData();
-//        HashMap<Integer,String> cate = service.categoryData();
-        System.out.println(cate);
-
+//        List<Category> cate = service.categoryData();
+        HashMap<Integer,String> cate = service.categoryData();
 //        HashMap<Integer,String> categoryList = new HashMap<>();
+
+
+//        System.out.println(cate);
+
 
 //        cate.add("option 1");
 //        cate.add("option 2");

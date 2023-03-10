@@ -58,7 +58,7 @@ public class ProductService {
         return repo.findAll();
     }
 
-    public List<Category> categoryData(){
+    public HashMap<Integer, String> categoryData(){
         return repo.AllData();
     }
 

@@ -35,12 +35,18 @@
 <!--            <select name="category" id="category" th:each="option : ${product}" >-->
 <!--              <option th:value="${option}" th:text="${option}" />-->
 <!--            </select>-->
+<!--              th:field="*{category_id}"-->
+<!--              <select name="category" id="category"  >-->
+<!--                  <option th:each="option : ${product}" th:value="${option}" th:text="${option}"></option>-->
+<!--              </select>-->
+<!--              </select>-->
 
-              <select name="category" id="category" th:field="*{category_id}" >
-<!--                  <option th:value="${option}" th:text="${option}" />-->
-                  <option th:each="option : ${product}" th:value="${option.id}" th:text="${option.name}"></option>
+              <select class="form-control select-checkbox" id="WhatToUpdate" multiple="multiple">
+                  <th:block th:each="idsAndText : ${product}">
+                      <option th:each="text : ${idsAndText.id}" th:value="${text}" th:text="${text}" />
+                  </th:block>
               </select>
-              </select>
+
           </td>
         </tr>
         <tr>

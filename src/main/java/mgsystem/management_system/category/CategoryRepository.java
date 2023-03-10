@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
     // Read
-    @Query(value = "SELECT id,name FROM category;", nativeQuery = true)
+    @Query(value = "SELECT c.id,c.name FROM category AS c;", nativeQuery = true)
     // 將資料存放進一個List回傳
     public List<Category> AllData();
 

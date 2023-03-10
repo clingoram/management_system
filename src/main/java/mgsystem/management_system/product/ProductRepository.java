@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product,Long>{
 
     @Query(value = "SELECT id AS cId,name AS cName FROM category;", nativeQuery = true)
     // 將資料存放進一個List回傳
-    public List<Category> AllData();
+    public HashMap<Integer,String> AllData();
 
 
     // Read
