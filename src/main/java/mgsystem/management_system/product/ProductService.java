@@ -3,9 +3,11 @@ package mgsystem.management_system.product;
 // service/business layer
 
 import jakarta.transaction.Transactional;
+import mgsystem.management_system.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +58,10 @@ public class ProductService {
         return repo.findAll();
     }
 
+    public HashMap<Integer, String> categoryData(){
+        return repo.AllData();
+    }
+
     /**
      * 顯示單一資料
      * @param id long
@@ -71,8 +77,8 @@ public class ProductService {
      * @param name String
      * @param price int
      */
-    public void insert(String name,int price){
-        repo.addData(name,price);
+    public void insert(String name, int price, Category id){
+        repo.addData(name,price,id);
     }
 
     /**

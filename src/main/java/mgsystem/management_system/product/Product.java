@@ -4,13 +4,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import mgsystem.management_system.category.Category;
 
-import java.math.BigDecimal;
-
 // Model
 // Create table.
 @Entity
 @Table(name="product")
 public class Product {
+
     @Id
     @SequenceGenerator(
             name = "product_sequence",
@@ -31,7 +30,6 @@ public class Product {
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL,targetEntity = Category.class)
-//    private Long category_id;
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -43,12 +41,12 @@ public class Product {
     }
 
     // Constructor 2(用來建立跟資料庫有關的資料表相關欄位等資料)
-    public Product(Long id,String name,Integer price) {
+    public Product(Long id,String name,Integer price,Category cid) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = cid;
 //        this.order_number = orderNumber;
-//        this.category_id = category_id;
     }
 
     public Product(String name) {
@@ -70,6 +68,9 @@ public class Product {
     //    public void setOrder_number(int orderNumber){
 //        this.order_number = orderNumber;
 //    }
+    public void setCategory(Category cid){
+        this.category = cid;
+    }
 
     // Getter
     public Long getId() {
@@ -83,6 +84,9 @@ public class Product {
     public int getPrice(){
 //        return new BigDecimal(price);
         return this.price;
+    }
+    public Category getCategory(){
+        return this.category;
     }
 
 //    public int getOrder_number(){

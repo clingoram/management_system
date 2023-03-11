@@ -1,5 +1,6 @@
 package mgsystem.management_system.product;
 
+import mgsystem.management_system.category.Category;
 import mgsystem.management_system.error.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,7 +36,19 @@ public class ProductController {
     @GetMapping("/data")
     public String showAddPage(Model model){
         Product product = new Product();
-        model.addAttribute("product",product);
+
+//        List<Category> cate = service.categoryData();
+        HashMap<Integer,String> cate = service.categoryData();
+//        HashMap<Integer,String> categoryList = new HashMap<>();
+
+
+//        System.out.println(cate);
+
+
+//        cate.add("option 1");
+//        cate.add("option 2");
+//        cate.add("option 3");
+        model.addAttribute("product",cate);
         return "add_product";
     }
 
