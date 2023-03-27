@@ -41,10 +41,12 @@
 <!--              </select>-->
 <!--              </select>-->
 
-              <select class="form-control select-checkbox" id="WhatToUpdate" multiple="multiple">
-                  <th:block th:each="idsAndText : ${product}">
-                      <option th:each="text : ${idsAndText.id}" th:value="${text}" th:text="${text}" />
-                  </th:block>
+              <select class="form-control select-checkbox" id="categories" th:field="*{cate}">
+                  <option value="">Nothing selected</option>
+                  <option th:each="cate : ${T(com.frontbackend.thymeleaf.bootstrap.model.Pizza).values()}"
+                          th:value="${pizza}"
+                          th:text="${pizza}">pizza
+                  </option>
               </select>
 
           </td>
