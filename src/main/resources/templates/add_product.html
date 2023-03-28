@@ -28,23 +28,9 @@
         <tr>
           <td>分類:</td>
           <td>
-<!--            <select name="category" id="category" >-->
-<!--              <option th:each="option : ${product}" th:value="${option}" th:text="${option}" />-->
-<!--            </select>-->
-
-<!--            <select name="category" id="category" th:each="option : ${product}" >-->
-<!--              <option th:value="${option}" th:text="${option}" />-->
-<!--            </select>-->
-<!--              th:field="*{category_id}"-->
-<!--              <select name="category" id="category"  >-->
-<!--                  <option th:each="option : ${product}" th:value="${option}" th:text="${option}"></option>-->
-<!--              </select>-->
-<!--              </select>-->
-
-              <select class="form-control select-checkbox" id="WhatToUpdate" multiple="multiple">
-                  <th:block th:each="idsAndText : ${product}">
-                      <option th:each="text : ${idsAndText.id}" th:value="${text}" th:text="${text}" />
-                  </th:block>
+              <select name="category">
+                  <option th:each="Opt : ${T(mgsystem.management_system.product.ProductCategories).values()}"
+                          th:value="${Opt}" th:text="${Opt.displayValue}"></option>
               </select>
 
           </td>

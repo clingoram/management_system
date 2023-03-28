@@ -11,19 +11,19 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
     // Read
-    @Query(value = "SELECT c.id,c.name FROM category AS c;", nativeQuery = true)
+    @Query(value = "SELECT c.id,c.name,c.eName FROM category AS c;", nativeQuery = true)
     // 將資料存放進一個List回傳
     public List<Category> AllData();
 
     // Read
-    @Query(value = "SELECT id,name FROM category WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT id,name,eName FROM category WHERE id = :id", nativeQuery = true)
     public String getOne(@Param("id") long id);
 
     // Insert
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO category(name, create_time) VALUES (:name, :now);", nativeQuery = true)
-    public void addData(@Param("name") String name, @Param("now")Date now);
+    @Query(value = "INSERT INTO category(name,eName, create_time) VALUES (:name,:english_name, :now);", nativeQuery = true)
+    public void addData(@Param("name") String name, @Param("now")Date now,@Param("english_name") String english_name);
 
     // Update
     @Transactional
