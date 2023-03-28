@@ -24,6 +24,8 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    private ProductCategories ProductCategories;
+
     // index
     @GetMapping("/index")
     public String index(Model model){
@@ -38,17 +40,11 @@ public class ProductController {
         Product product = new Product();
 
 //        List<Category> cate = service.categoryData();
-        HashMap<Integer,String> cate = service.categoryData();
+//        HashMap<Integer,String> cate = service.categoryData();
 //        HashMap<Integer,String> categoryList = new HashMap<>();
-
-
 //        System.out.println(cate);
 
-
-//        cate.add("option 1");
-//        cate.add("option 2");
-//        cate.add("option 3");
-        model.addAttribute("product",cate);
+        model.addAttribute("product",product);
         return "add_product";
     }
 
