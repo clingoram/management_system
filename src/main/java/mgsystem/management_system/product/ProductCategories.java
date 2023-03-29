@@ -1,16 +1,25 @@
 package mgsystem.management_system.product;
 
 public enum ProductCategories {
-    EGGCAKE("蛋餅"),
-    HAMBERGER("漢堡");
+    EGGCAKE(2,"蛋餅"),
+    HAMBERGER(1,"漢堡");
 
-    private final String displayValue;
 
-    private ProductCategories(String displayValue) {
+    private final int displayValue;
+    private final String displayName;
+
+    private ProductCategories(int displayValue,String displayName) {
         this.displayValue = displayValue;
+        this.displayName = displayName;
     }
 
-    public String getDisplayValue() {
+    public int getDisplayValue() {
         return displayValue;
+    }
+    public String getDisplayName(){
+        return displayName;
+    }
+    @Override public String toString() {
+        return displayName;
     }
 }
