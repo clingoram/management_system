@@ -30,7 +30,7 @@
           <td>
               <select name="category">
                   <option th:each="Opt : ${T(mgsystem.management_system.product.ProductCategories).values()}"
-                          th:value="${Opt}" th:text="${Opt.displayValue}"></option>
+                          th:value="${Opt.displayValue}" th:text="${Opt.displayName}"></option>
               </select>
 
           </td>

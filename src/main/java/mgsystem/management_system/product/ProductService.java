@@ -58,10 +58,6 @@ public class ProductService {
         return repo.findAll();
     }
 
-    public HashMap<Integer, String> categoryData(){
-        return repo.AllData();
-    }
-
     /**
      * 顯示單一資料
      * @param id long
@@ -77,7 +73,7 @@ public class ProductService {
      * @param name String
      * @param price int
      */
-    public void insert(String name, int price, Category id){
+    public void insert(String name, int price, int id){
         repo.addData(name,price,id);
     }
 

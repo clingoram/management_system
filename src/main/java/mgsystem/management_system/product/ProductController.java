@@ -38,12 +38,6 @@ public class ProductController {
     @GetMapping("/data")
     public String showAddPage(Model model){
         Product product = new Product();
-
-//        List<Category> cate = service.categoryData();
-//        HashMap<Integer,String> cate = service.categoryData();
-//        HashMap<Integer,String> categoryList = new HashMap<>();
-//        System.out.println(cate);
-
         model.addAttribute("product",product);
         return "add_product";
     }
