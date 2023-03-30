@@ -2,6 +2,7 @@ package mgsystem.management_system.category;
 import mgsystem.management_system.error.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Controller
 //@RestController
-//@RequestMapping("/api")
+@RequestMapping(path="/api",consumes = MediaType.APPLICATION_JSON_VALUE)
 public class CategoryController {
     final String DIRECT_URL = "redirect:/api/index";
 
@@ -22,8 +23,11 @@ public class CategoryController {
     // index
     @GetMapping("/index")
     public String index(Model model){
-        List<Category> list = categoryService.AllData();
-        model.addAttribute("categories", list);
+        List<Category> list = categoryService.AllCategoryData();
+//        String list = categoryService.AllCategoryData();
+        System.out.println(list);
+//        model.addAttribute("categories", list);
+
         return "/index";
     }
 }

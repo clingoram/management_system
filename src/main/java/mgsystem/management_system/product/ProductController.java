@@ -1,6 +1,5 @@
 package mgsystem.management_system.product;
 
-import mgsystem.management_system.category.Category;
 import mgsystem.management_system.error.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 // Handle requests from the client side.
 @Controller

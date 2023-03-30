@@ -33,7 +33,7 @@
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td>
-        <a th:href="@{/api/update/{id}(id=${product.id})}" class="btn btn-success">編輯</a>
+        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-success">編輯</a>
         <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-danger">刪除</a>
       </td>
     </tr>

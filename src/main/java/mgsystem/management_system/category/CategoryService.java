@@ -15,8 +15,8 @@ public class CategoryService {
     /**
      * 顯示所有資料
      */
-    public List<Category> AllData(){
-        return repo.findAll();
+    public List<Category> AllCategoryData(){
+        return repo.AllData();
     }
 
 }
