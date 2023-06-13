@@ -7,51 +7,55 @@
 
 </head>
 <body>
-<div align="center">
+  <div align="center">
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="http://localhost:8080/api/index">虛構早午餐</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">關於</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">產品</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:8080/api/index">虛構早午餐</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">關於</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">產品</a>
+            </li>
+          </ul>
 
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="#">登入</a>
-          </li>
-        </ul>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="#">登入</a>
+            </li>
+          </ul>
 
+        </div>
       </div>
-    </div>
-  </nav>
-  <br/><br/>
+    </nav>
+    <br/><br/>
 
-  <table border="1" cellpadding="10">
-    <thead>
-    <tr>
-      <th>名稱</th>
-      <th>售價</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="product : ${listProducts}">
-      <td th:text="${product.name}"></td>
-      <td th:text="${product.price}"></td>
-<!--      <td>-->
-<!--        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-success">編輯</a>-->
-<!--        <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-danger">刪除</a>-->
-<!--      </td>-->
-    </tr>
-    </tbody>
-  </table>
-</div>
+    <table border="1" cellpadding="10">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名稱</th>
+          <th>售價</th>
+          <th>數量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="product : ${listProducts}">
+          <td>
+            <input type="checkbox" th:value="${product.id}">
+          </td>
+          <td th:text="${product.name}"></td>
+          <td th:text="${product.price}"></td>
+          <td>
+            <input type = "number" min ="0" max="100">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <script src="https://getbootstrap.com/#:~:text=%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/bootstrap%405.3.0%2Dalpha1/dist/js/bootstrap.bundle.min.js%22%20integrity%3D%22sha384%2Dw76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC%2BnuZB%2BEYdgRZgiwxhTBTkF7CXvN%22%20crossorigin%3D%22anonymous%22%3E%3C/script%3E"></script>
 </body>
