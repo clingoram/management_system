@@ -30,12 +30,21 @@ public class ProductController {
         return "/index";
     }
 
+    // management page
+    @GetMapping("/management")
+    public String showManagement(Model model){
+        List<Product> list = service.AllData();
+        model.addAttribute("listProducts", list);
+        return "management";
+    }
+
     // direct to add product page.
     @GetMapping("/data")
     public String showAddPage(Model model){
         Product product = new Product();
         model.addAttribute("product",product);
         return "add_product";
+//        return "backend/add_product";
     }
 
     // insert
