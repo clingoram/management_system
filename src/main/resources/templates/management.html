@@ -8,10 +8,21 @@
 </head>
 <body>
 <div align="center">
-  <h1>清單</h1>
-  <a href="/api/data">新增產品</a>
-  <br/><br/>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:8080/api/index">虛構早午餐</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">關於</a>
+          </li>
+        </ul>
 
+      </div>
+    </div>
+  </nav>
+
+  <a href="/api/data">新增</a>
   <div class="btn-group" role="group" aria-label="Basic outlined example" th:each="category : ${categories}">
     <button type="button" class="btn btn-outline-primary" th:text="${category.name}"></button>
 
@@ -33,8 +44,8 @@
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td>
-        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-success">編輯</a>
-        <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-danger">刪除</a>
+        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-outline-secondary">編輯</a>
+        <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-outline-secondary">刪除</a>
       </td>
     </tr>
     </tbody>
