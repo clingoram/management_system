@@ -22,10 +22,7 @@
     </div>
   </nav>
 
-  <h1>清單</h1>
-  <a href="/api/data">新增產品</a>
-  <br/><br/>
-
+  <a href="/api/data">新增</a>
   <div class="btn-group" role="group" aria-label="Basic outlined example" th:each="category : ${categories}">
     <button type="button" class="btn btn-outline-primary" th:text="${category.name}"></button>
 
@@ -47,8 +44,8 @@
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td>
-        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-success">編輯</a>
-        <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-danger">刪除</a>
+        <a th:href="@{/api/update/{id}(id = ${product.id})}" class="btn btn-outline-secondary">編輯</a>
+        <a th:href="@{/api/delete/{id}(id = ${product.id})}" class="btn btn-outline-secondary">刪除</a>
       </td>
     </tr>
     </tbody>
